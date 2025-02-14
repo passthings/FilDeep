@@ -524,7 +524,6 @@ def test(data_path, test_dataloader, device, exp_name, logs_save_path):
                                         + test_dataloader.scale_factor_for_unload[i + 3]
 
     def transform_and_save_strip(pred_strip, save_path, pred_type="unloading"):
-        df = pd.DataFrame(columns=['type', 'id', 'last point', 'each sample'])
 
         logging.info(f"Test Error for Stage: {pred_type}")
         mean_test_dist_last_point, max_test_dist_last_point, min_test_dist_last_point = 0, 0, 1 << 30
@@ -569,10 +568,6 @@ def test(data_path, test_dataloader, device, exp_name, logs_save_path):
             type_id = test_dataloader.mould_line_paths[j][type_idx: type_idx + 6]
             type_path = os.path.join(save_path, type_id)
 
-            new_record = pd.DataFrame(
-                [{'type': type_id, 'id': test_dataloader.mould_line_paths[j][-8:], 'last point': test_dist_last_point,
-                  'each sample': sample_mean_test_dist}])
-            df = pd.concat([df, new_record], ignore_index=True)
 
             if not os.path.exists(type_path):
                 os.mkdir(type_path)
@@ -600,9 +595,8 @@ def test(data_path, test_dataloader, device, exp_name, logs_save_path):
             f"min of distance for each sample: {min_sample_mean_test_dist}")
         logging.info("")
 
-        return df
 
-    df_unloading = transform_and_save_strip(pred_unloaded_strips,
+    transform_and_save_strip(pred_unloaded_strips,
                                             pred_unloaded_strip_path, "unloading")
 
 
