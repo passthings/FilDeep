@@ -569,11 +569,6 @@ def test(data_path, test_dataloader, device, exp_name, logs_save_path):
             type_id = test_dataloader.mould_line_paths[j][type_idx: type_idx + 6]
             type_path = os.path.join(save_path, type_id)
 
-            logging.info(
-                f"{test_dataloader.mould_line_paths[j][-8:]} {type_id} Distance of last point: {test_dist_last_point}")
-            logging.info(
-                f"{test_dataloader.mould_line_paths[j][-8:]} {type_id} Distance for each sample: {sample_mean_test_dist}")
-
             new_record = pd.DataFrame(
                 [{'type': type_id, 'id': test_dataloader.mould_line_paths[j][-8:], 'last point': test_dist_last_point,
                   'each sample': sample_mean_test_dist}])
