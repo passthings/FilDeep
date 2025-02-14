@@ -12,7 +12,7 @@ pip install -r ./requirements.txt
 
 ### Dataset
 
-The dataset is large, so we upload it on the Internet. [Download]() the data,  extract it and put it in the `./data` folder. 
+The dataset is large, so we will upload it on the Internet in the near future. Download the data,  extract it and put it in the `./data` folder. 
 
 
 ### Train

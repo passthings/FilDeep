@@ -609,9 +609,7 @@ def test(data_path, test_dataloader, device, exp_name, logs_save_path):
 
     df_unloading = transform_and_save_strip(pred_unloaded_strips,
                                             pred_unloaded_strip_path, "unloading")
-    unloading_save_path = os.path.join(logs_save_path, f"unloading.csv")
 
-    df_unloading.to_csv(unloading_save_path, index=False)
 
 def main():
     exp_name = f"{mode}_{mode_id}"
